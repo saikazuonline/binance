@@ -23,23 +23,14 @@ import com.google.gson.JsonObject;
 import com.webcerebrium.binance.api.BinanceApi;
 import com.webcerebrium.binance.api.BinanceApiException;
 
+import base.GetApi;
 import currency.NewCurrencySearch;
 
-public class NewCurrencySearchImpl implements NewCurrencySearch{
+public class NewCurrencySearchImpl extends GetApi implements NewCurrencySearch {
 	
 	public void search(){
 		
-		Properties properties = new Properties();
-		String propertyFile = "tmp/information.properties";
-		
 		try {
-				InputStream inputStream = new FileInputStream(propertyFile);
-				properties.load(inputStream);
-				inputStream.close();
-			
-				BinanceApi api = new BinanceApi();
-				api.setApiKey(properties.getProperty("apiKey"));
-				api.setSecretKey(properties.getProperty("apiSecretKey"));
 				
 				// Documentインスタンスの生成
 		        DocumentBuilder documentBuilder = null;
