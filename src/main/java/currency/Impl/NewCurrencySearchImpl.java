@@ -33,13 +33,13 @@ public class NewCurrencySearchImpl implements NewCurrencySearch{
 		String propertyFile = "tmp/information.properties";
 		
 		try {
-				BinanceApi api = new BinanceApi();
-				api.setApiKey("kiEQjVkGDV7VvlLYxzvWmICAEib68dWB4qF7CedrKSPZNZvYgLQREXM3wmmUMjSL");
-				api.setSecretKey("7TImxCuD1ri4as3xa9cWEcRXoWxUn0mW6Ltp4MAPiBTDIY7bNo163SoXbQybqPW6");
-			
 				InputStream inputStream = new FileInputStream(propertyFile);
 				properties.load(inputStream);
 				inputStream.close();
+			
+				BinanceApi api = new BinanceApi();
+				api.setApiKey(properties.getProperty("apiKey"));
+				api.setSecretKey(properties.getProperty("apiSecretKey"));
 				
 				// Documentインスタンスの生成
 		        DocumentBuilder documentBuilder = null;
