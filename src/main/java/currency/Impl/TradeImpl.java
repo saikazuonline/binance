@@ -10,19 +10,19 @@ import com.webcerebrium.binance.datatype.BinanceOrderType;
 import com.webcerebrium.binance.datatype.BinanceSymbol;
 
 import base.GetApi;
-import currency.CurrencyBuy;
+import currency.Trade;
 
-public class CurrencyBuyImpl extends GetApi implements CurrencyBuy{
+public class TradeImpl extends GetApi implements Trade{
 
-	public void buy(String currency, double price, int quantity) {
+	public void buy(String currency, BigDecimal price, BigDecimal quentity) {
 		
 		BinanceSymbol symbol;
 		try {
 			symbol = new BinanceSymbol(currency + "BTC");
 			BinanceOrderPlacement placement = new BinanceOrderPlacement(symbol, BinanceOrderSide.BUY);
 			placement.setType(BinanceOrderType.LIMIT);
-			placement.setPrice(BigDecimal.valueOf(price));
-			placement.setQuantity(BigDecimal.valueOf(quantity));
+			placement.setPrice(price);
+			placement.setQuantity(quentity);
 			BinanceOrder order;
 			order = api.getOrderById(symbol, api.createOrder(placement).get("orderId").getAsLong());
 			System.out.println(order.toString());
@@ -32,14 +32,14 @@ public class CurrencyBuyImpl extends GetApi implements CurrencyBuy{
 		
 	}
 	
-	public void sell(String currency, double price, int quantity){
+	public void sell(String currency, BigDecimal price, BigDecimal quantity){
 		BinanceSymbol symbol;
 		try {
 			symbol = new BinanceSymbol(currency + "BTC");
 			BinanceOrderPlacement placement = new BinanceOrderPlacement(symbol, BinanceOrderSide.SELL);
 			placement.setType(BinanceOrderType.LIMIT);
-			placement.setPrice(BigDecimal.valueOf(price));
-			placement.setQuantity(BigDecimal.valueOf(quantity));
+			placement.setPrice(price);
+			placement.setQuantity(quantity);
 			BinanceOrder order;
 			order = api.getOrderById(symbol, api.createOrder(placement).get("orderId").getAsLong());
 			System.out.println(order.toString());

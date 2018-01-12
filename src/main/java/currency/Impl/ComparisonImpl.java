@@ -1,11 +1,11 @@
 package currency.Impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
@@ -16,45 +16,55 @@ import org.w3c.dom.NodeList;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.webcerebrium.binance.api.BinanceApi;
 import com.webcerebrium.binance.api.BinanceApiException;
+import com.webcerebrium.binance.datatype.BinanceSymbol;
 
 import base.GetApi;
-import currency.CurrencyComparison;
+import bean.TradeInfoBean;
+import currency.Comparison;
 
-public class CurrencyComparisonImpl extends GetApi implements CurrencyComparison{
+public class ComparisonImpl extends GetApi implements Comparison{
 	
 	private List<String> beforeList;
 	private List<String> afterList;
 	private static final String XML_File = "BitCoin.xml";
-	private List<String> hitCurrencyList;
 
-	public void comparison() {
+	public List<TradeInfoBean> comparison() {
 		
 		List<String> beList = getBeforeCurrency();
 		List<String> afList = getAfterCurrency();
+		List<TradeInfoBean> tradeInfoList = new ArrayList<TradeInfoBean>();
 		boolean comparisonFlg = false;
 		boolean hit;
 		
 		for(String afCurrency : afList){
 			hit = false;
 			for(String beCurrency: beList){
-				if(StringUtils.equals(beCurrency, afCurrency)){
+				if(StringUtils.equals(afCurrency, beCurrency)){
 					hit = true;
 				}
 			}
 			if(hit == false){
-				System.out.println(afCurrency + "の通貨が追加されています。");
-				comparisonFlg = true;
+				try {
+					String repCurrency = afCurrency.replace("\"", "");
+					BigDecimal price = api.pricesMap().get(repCurrency + "BTC");
+					TradeInfoBean tradeInfo = new TradeInfoBean();
+					tradeInfo.setCurrency(afCurrency);
+					tradeInfo.setPrice(price);
+					tradeInfoList.add(tradeInfo);
+					comparisonFlg = true;
+				} catch (BinanceApiException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-		
 		if(comparisonFlg == false){
 			System.out.println("新しく追加された通貨はありません。");
 		} else {
 			System.out.println("新しく追加された通貨があります。");
 		}
 
+		return tradeInfoList;
 		
 	}
 	

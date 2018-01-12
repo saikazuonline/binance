@@ -1,19 +1,26 @@
 package execute;
 
-import currency.CurrencyComparison;
+import java.util.List;
+
+import bean.TradeInfoBean;
+import currency.Comparison;
 import currency.NewCurrencySearch;
-import currency.Impl.CurrencyComparisonImpl;
+import currency.Impl.ComparisonImpl;
 import currency.Impl.NewCurrencySearchImpl;
 
 public class ComparisonExecute {
 	
 	public static void main(String args[]){
 		
-		CurrencyComparison currencyComparison = new CurrencyComparisonImpl();		
+		Comparison currencyComparison = new ComparisonImpl();		
 		
 		// 前回取得した通貨全量と今回の全量を比較し、通知する。
 		currencyComparison.execute();
-		currencyComparison.comparison();
+		List<TradeInfoBean> currencyList = currencyComparison.comparison();
+		for(TradeInfoBean currency : currencyList){
+			System.out.println(currency.getCurrency());
+			System.out.println(currency.getPrice());
+		}
 	}
 	
 }
