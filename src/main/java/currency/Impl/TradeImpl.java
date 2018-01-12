@@ -28,6 +28,9 @@ public class TradeImpl extends GetApi implements Trade{
 			System.out.println(order.toString());
 		} catch (BinanceApiException e) {
 			e.printStackTrace();
+			System.out.println("------------------------------");
+			System.out.println("購入できませんでした。");
+			System.out.println("------------------------------");
 		}
 		
 	}
@@ -45,6 +48,9 @@ public class TradeImpl extends GetApi implements Trade{
 			System.out.println(order.toString());
 		} catch (BinanceApiException e) {
 			e.printStackTrace();
+			System.out.println("------------------------------");
+			System.out.println("売却できませんでした。");
+			System.out.println("------------------------------");
 		}
 	}
 

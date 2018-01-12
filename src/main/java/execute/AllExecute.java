@@ -1,6 +1,5 @@
 package execute;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import bean.TradeInfoBean;
@@ -20,7 +19,6 @@ public class AllExecute {
 		Calculation calculation = new CalculationImpl();
 		Comparison comparison = new ComparisonImpl();
 		Trade trade = new TradeImpl();
-//		List<TradeInfoBean> tradeInfoList = new ArrayList<TradeInfoBean>();
 		
 		comparison.execute();
 		List<TradeInfoBean> tradeInfoList = comparison.comparison();
@@ -30,9 +28,17 @@ public class AllExecute {
 			calculation.setQuentity(tradeInfo.getPrice(), tradeInfo);
 			trade.execute();
 			trade.buy(tradeInfo.getCurrency(), tradeInfo.getPrice(), tradeInfo.getQuentity());
+			System.out.println("------------------------------");
+			System.out.println("新通貨: " + tradeInfo.getCurrency());
+			System.out.println("価値: " + tradeInfo.getPrice());
+			System.out.println("購入量: " + tradeInfo.getQuentity());
+			System.out.println("------------------------------");
 		}
 		
 		newCurrencySearch.execute();
 		newCurrencySearch.search();
+		System.out.println("------------------------------");
+		System.out.println("XMLを更新しました。");
+		System.out.println("------------------------------");
 	}
 }

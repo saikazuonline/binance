@@ -55,7 +55,6 @@ public class NewCurrencySearchImpl extends GetApi implements NewCurrencySearch {
 				// XMLファイルの作成
 				File file = new File("BitCoin.xml");
 				write(file, document);
-				System.out.println("成功");
 			  
 			} catch (BinanceApiException e) {
 				System.out.println( "ERROR: " + e.getMessage());
