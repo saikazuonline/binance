@@ -17,7 +17,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.webcerebrium.binance.api.BinanceApiException;
-import com.webcerebrium.binance.datatype.BinanceSymbol;
 
 import base.GetApi;
 import bean.TradeInfoBean;
@@ -49,7 +48,7 @@ public class ComparisonImpl extends GetApi implements Comparison{
 					String repCurrency = afCurrency.replace("\"", "");
 					BigDecimal price = api.pricesMap().get(repCurrency + "BTC");
 					TradeInfoBean tradeInfo = new TradeInfoBean();
-					tradeInfo.setCurrency(afCurrency);
+					tradeInfo.setCurrency(repCurrency);
 					tradeInfo.setPrice(price);
 					tradeInfoList.add(tradeInfo);
 					comparisonFlg = true;

@@ -24,11 +24,12 @@ public class GetApi {
 			InputStream inputStream = new FileInputStream(propertyFile);
 			properties.load(inputStream);
 			inputStream.close();
-		
+			
+			// プロパティファイルからAPIキーを取得
 			api.setApiKey(properties.getProperty("apiKey"));
+			// プロパティファイルからシークレットAPIを取得
 			api.setSecretKey(properties.getProperty("apiSecretKey"));
 			
-			trade.setBtcusd(new BigDecimal(properties.getProperty("BTCUSD")));
 			trade.setDoller(new BigDecimal(properties.getProperty("DOLLER")));
 			
 		} catch (Exception e) {

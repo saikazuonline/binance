@@ -21,11 +21,11 @@ public class CalculationImpl extends GetApi implements Calculation {
 			BigDecimal quentity = BigDecimal.ZERO;
 				
 			TRXDollars = BTCUSD.multiply(TRX);
-			quentity = DOLLARS.divide(TRXDollars);
+			quentity = DOLLARS.divide(TRXDollars, 2, BigDecimal.ROUND_HALF_UP);
 				
 			System.out.println(TRXDollars);
 			System.out.println(String.format("%.0f", quentity));
-			tradeInfoBean.setQuentity(quentity);
+			tradeInfoBean.setQuentity(quentity.setScale(0, BigDecimal.ROUND_HALF_UP));
 		} catch (BinanceApiException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

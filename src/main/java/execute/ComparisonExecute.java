@@ -4,9 +4,7 @@ import java.util.List;
 
 import bean.TradeInfoBean;
 import currency.Comparison;
-import currency.NewCurrencySearch;
 import currency.Impl.ComparisonImpl;
-import currency.Impl.NewCurrencySearchImpl;
 
 public class ComparisonExecute {
 	

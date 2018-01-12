@@ -20,14 +20,19 @@ public class AllExecute {
 		Calculation calculation = new CalculationImpl();
 		Comparison comparison = new ComparisonImpl();
 		Trade trade = new TradeImpl();
-		List<TradeInfoBean> tradeInfoList = new ArrayList<TradeInfoBean>();
+//		List<TradeInfoBean> tradeInfoList = new ArrayList<TradeInfoBean>();
 		
 		comparison.execute();
-		tradeInfoList = comparison.comparison();
+		List<TradeInfoBean> tradeInfoList = comparison.comparison();
+		
 		for(TradeInfoBean tradeInfo : tradeInfoList){
+			calculation.execute();
 			calculation.setQuentity(tradeInfo.getPrice(), tradeInfo);
+			trade.execute();
 			trade.buy(tradeInfo.getCurrency(), tradeInfo.getPrice(), tradeInfo.getQuentity());
 		}
+		
+		newCurrencySearch.execute();
 		newCurrencySearch.search();
 	}
 }
