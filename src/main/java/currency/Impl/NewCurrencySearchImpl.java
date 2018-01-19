@@ -53,7 +53,7 @@ public class NewCurrencySearchImpl extends GetApi implements NewCurrencySearch {
 				}
 				
 				// XMLファイルの作成
-				File file = new File("BitCoin.xml");
+				File file = new File("data/BitCoin.xml");
 				write(file, document);
 			  
 			} catch (BinanceApiException e) {

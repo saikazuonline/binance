@@ -26,7 +26,7 @@ class Count extends TimerTask{
 	int count=0;
 	int set_hour;
 	public Count(int h){
-		set_hour=h*3600;//設定時間*3600秒（１時間）
+		set_hour=h*1800;//設定時間*3600秒（１時間）
 	}
 	
 	@Override

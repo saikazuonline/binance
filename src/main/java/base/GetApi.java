@@ -17,7 +17,7 @@ public class GetApi {
 	public void execute(){
 	
 		Properties properties = new Properties();
-		String propertyFile = "tmp/information.properties";
+		String propertyFile = "tmp/info.properties";
 	
 		try {
 			

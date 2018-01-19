@@ -26,7 +26,7 @@ public class ComparisonImpl extends GetApi implements Comparison{
 	
 	private List<String> beforeList;
 	private List<String> afterList;
-	private static final String XML_File = "BitCoin.xml";
+	private static final String XML_File = "data/BitCoin.xml";
 
 	public List<TradeInfoBean> comparison() {
 		
