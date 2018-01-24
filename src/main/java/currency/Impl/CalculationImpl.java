@@ -17,18 +17,13 @@ public class CalculationImpl extends GetApi implements Calculation {
 		try {
 			 
 			BigDecimal btcusd = api.pricesMap().get(BTC_USDT);
-			BigDecimal trx = price;
 			BigDecimal dollars = trade.getDoller();;
 			BigDecimal currencyDollars = BigDecimal.ZERO;
 			BigDecimal quentity = BigDecimal.ZERO;
 				
-			currencyDollars = btcusd.multiply(trx);
+			currencyDollars = btcusd.multiply(price);
 			quentity = dollars.divide(currencyDollars, 2, BigDecimal.ROUND_HALF_UP);
-				
-			System.out.println("------------------------------");
-			System.out.println("価値: " + currencyDollars);
-			System.out.println("量: " + String.format("%.0f", quentity));
-			System.out.println("------------------------------");
+			
 			tradeInfoBean.setQuentity(quentity.setScale(0, BigDecimal.ROUND_HALF_UP));
 		} catch (BinanceApiException e) {
 			// TODO Auto-generated catch block
