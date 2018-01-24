@@ -8,6 +8,6 @@ public interface Calculation {
 	
 	public void execute();
 	
-	public void setQuentity(BigDecimal bigDecimal, TradeInfoBean tradeInfoBean);
+	public void setQuentity(BigDecimal price, TradeInfoBean tradeInfoBean);
 
 }

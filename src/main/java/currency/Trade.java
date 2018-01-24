@@ -6,8 +6,8 @@ public interface Trade {
 	
 	public void execute();
 	
-	public void buy(String currency, BigDecimal price, BigDecimal quantity);
+	public void buy(String currency, BigDecimal price, BigDecimal quentity);
 	
-	public void sell(String currency, BigDecimal price, BigDecimal quantity);
+	public void sell(String currency, BigDecimal price, BigDecimal quentity);
 	
 }

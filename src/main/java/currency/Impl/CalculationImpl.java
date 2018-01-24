@@ -25,10 +25,6 @@ public class CalculationImpl extends GetApi implements Calculation {
 			currencyDollars = btcusd.multiply(trx);
 			quentity = dollars.divide(currencyDollars, 2, BigDecimal.ROUND_HALF_UP);
 				
-			System.out.println("------------------------------");
-			System.out.println("価値: " + currencyDollars);
-			System.out.println("量: " + String.format("%.0f", quentity));
-			System.out.println("------------------------------");
 			tradeInfoBean.setQuentity(quentity.setScale(0, BigDecimal.ROUND_HALF_UP));
 		} catch (BinanceApiException e) {
 			// TODO Auto-generated catch block

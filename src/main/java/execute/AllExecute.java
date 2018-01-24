@@ -66,6 +66,7 @@ class Get_and_Write extends Thread{//データを取得、ファイル書き出�
 			System.out.println("新通貨: " + tradeInfo.getCurrency());
 			System.out.println("価値: " + tradeInfo.getPrice());
 			System.out.println("購入量: " + tradeInfo.getQuentity());
+			System.out.println("仮想通貨を購入致しました。");
 			System.out.println("------------------------------");
 		}
 		
