@@ -11,7 +11,7 @@ public class Init {
 		
 		// Binanceの通貨 全取得しXMLに書き込み
 		currencySearch.execute();
-		currencySearch.search();
+		 currencySearch.search(); 
 	
 	}
 }
