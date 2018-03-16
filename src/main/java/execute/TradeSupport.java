@@ -53,7 +53,7 @@ public class TradeSupport {
             BigDecimal lowerLimit = price.multiply(min);
 
             // BigDecimal型からString型へ変換
-            String strPrice = price.toString();
+            String strPrice = price.toString(); 
             // 「.」を「,」に変換　。(「.」はsplitできないため)
             String strReplace = strPrice.replace(".",",");
             // 「,」をターゲットにsprit
