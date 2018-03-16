@@ -8,7 +8,7 @@
 		<dependency>
     		<groupId>com.webcerebrium</groupId>
     		<artifactId>binance-api</artifactId>
-    		<version>1.0.7</version>
+    		<version>1.0.9</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
@@ -16,6 +16,11 @@
     		<artifactId>commons-lang3</artifactId>
     		<version>3.7</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.webcerebrium</groupId>
+            <artifactId>binance-api</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+    </dependencies>
   
 </project>
